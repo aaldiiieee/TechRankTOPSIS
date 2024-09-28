@@ -1,0 +1,49 @@
+#wrapper #content-wrapper {
+    height: 100vh;
+}
+
+table.dataTable th.dt-type-numeric, table.dataTable th.dt-type-date, table.dataTable td.dt-type-numeric, table.dataTable td.dt-type-date {
+    text-align: left !important;
+}
+
+div.dt-container select.dt-input {
+    margin-right: 6px;
+}
+
+.topbar {
+    border-radius: 50px;
+}
+
+header {
+    padding: 18px;
+}
+
+.btn-add-employee, .btn-add-customer {
+    width: 50%;
+    height: 40px;
+    white-space: nowrap;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.pdf-body {
+    background: red;
+}
+
+table.dataTable>tbody>tr>th, table.dataTable>tbody>tr>td {
+    white-space: nowrap;
+}
+
+@media(max-width: 991px) {
+    .btn-add-employee, .btn-add-customer {
+        width: 100%;
+    }
+
+    .sidebar .sidebar-heading {
+        padding: 5px 1rem;
+    }
+}
