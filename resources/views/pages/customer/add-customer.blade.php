@@ -27,7 +27,7 @@
                     <div class="col-lg-6 col-12">
                         <div class="form-group">
                             <label for="phone">No. Telepon</label>
-                            <input type="number" name="number" id="phone" class="form-control" placeholder="Masukan nomor telepon" required>
+                            <input type="number" name="phone" id="phone" class="form-control" placeholder="Masukan nomor telepon" required>
                         </div>
                     </div>
                     <div class="col-lg-6 col-12">
@@ -38,8 +38,8 @@
                     </div>
                     <div class="col-lg-6 col-12">
                         <div class="form-floating">
-                            <label for="purpose">Tugas</label>
-                            <textarea class="form-control" placeholder="Leave a comment here" id="purpose"></textarea>
+                            <label for="keluhan">Tugas</label>
+                            <textarea class="form-control" name="keluhan" placeholder="Leave a comment here" id="keluhan"></textarea>
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
             const address = $('#address').val();
             const phone = $('#phone').val();
             const email = $('#email').val();
-            const purpose = $('#purpose').val();
+            const purpose = $('#keluhan').val();
 
             const token = $('meta[name="csrf-token"]').attr('content');
 
@@ -76,7 +76,7 @@
                     address: address,
                     phone: phone,
                     email: email,
-                    purpose: purpose,
+                    keluhan: purpose,
                     _token: token
                 },
                 success: function(data) {
