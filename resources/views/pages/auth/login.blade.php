@@ -30,8 +30,9 @@
 
                             <hr class="border-primary-subtle mb-4">
 
-                            <h2 class="h1 mb-4">We make digital products that drive you to stand out.</h2>
-                            <p class="lead mb-5">We write words, take photos, make videos, and interact with artificial intelligence.</p>
+                            <h2 class="h1 mb-4">Solusi Inovatif untuk Service Hardware Komputer</h2>
+                            <p class="lead mb-5">Kami menyediakan layanan perbaikan dan pemeliharaan hardware komputer yang andal, mulai dari troubleshooting, penggantian komponen, hingga optimalisasi performa sistem. Dengan tim teknisi berpengalaman, kami memastikan setiap perangkat bekerja maksimal.</p>
+
                             <div class="text-endx">
                                 <svg 
                                     xmlns="http://www.w3.org/2000/svg" 
