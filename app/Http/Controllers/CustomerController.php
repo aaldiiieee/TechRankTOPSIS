@@ -24,7 +24,7 @@ class CustomerController extends Controller
             'address' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
             'email' => 'required|string|email|max:255',
-            'purpose' => 'required|string|max:255'
+            'keluhan' => 'required|string|max:255'
         ]);
 
         $customer = new Customer();
@@ -33,7 +33,7 @@ class CustomerController extends Controller
         $customer->address = $request->input('address');
         $customer->phone = $request->input('phone');
         $customer->email = $request->input('email');
-        $customer->purpose = $request->input('purpose');
+        $customer->keluhan = $request->input('keluhan');
         $customer->techID = "";
         $customer->techName = "";
         $customer->save();
