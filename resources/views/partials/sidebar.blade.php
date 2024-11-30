@@ -6,7 +6,7 @@
             </div> --}}
 
             <div class="sidebar-brand-icon">
-                <img src="{{ asset('images/logo-brand.png') }}" width="100" alt="">
+                <img src="{{ asset('images/logo_it_cyber.png') }}" width="100" alt="">
             </div>
         </a>
 

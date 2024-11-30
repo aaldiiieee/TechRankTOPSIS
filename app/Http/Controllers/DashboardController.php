@@ -35,6 +35,8 @@ class DashboardController extends Controller
     {
         $thisUser = Auth::user();
         $userCount = User::where('role', 'user')->count();
+        $adminCount = User::where('role', 'admin')->count();
+        $superAdminCount = User::where('role', 'super_admin')->count();
         $customerCount = Customer::count();
         $successTask = Customer::where('status', 'success')->count();
 
@@ -66,6 +68,8 @@ class DashboardController extends Controller
             'message' => 'Data retrieved successfully',
             'data' => [
                 'total_users' => $userCount,
+                'total_admins' => $adminCount,
+                'total_super_admins' => $superAdminCount,
                 'total_customers' => $customerCount,
                 'success_task' => $successTask,
                 'success_task_per_day' => $formattedSuccessTaskPerDay

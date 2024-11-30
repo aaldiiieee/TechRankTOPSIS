@@ -9,6 +9,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TechicianController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceReportController;
+use App\Http\Controllers\FeedbackController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware(AuthMiddleware::class);
 
@@ -17,9 +18,6 @@ Route::middleware(['Role:super_admin,admin'])->group(function () {
     //  Route for employee
     Route::get('/add-employee', [EmployeeController::class, 'index'])->name('add-employee');
     Route::get('/list-employee', [EmployeeController::class, 'showEmployee'])->name('list-employee');
-
-    //  Route for dashboard
-    
 
     //  Route for customer
     Route::get('/list-customer', [CustomerController::class, 'index'])->name('customer.index');
@@ -32,6 +30,9 @@ Route::middleware(['Role:super_admin,admin'])->group(function () {
 Route::middleware(['Role:user'])->group(function () {
     Route::get('/customers', [TechicianController::class, 'getCustomer'])->name('technician.getCustomer');
 });
+
+Route::get('/feedback/{id}', [FeedbackController::class, 'showFeedbackForm']);
+Route::post('/feedback/{id}', [FeedbackController::class, 'submitFeedback']);
 
 // Route for report
 Route::get('/report-technician/{id}', [ServiceReportController::class, 'index'])->name('report.technician');

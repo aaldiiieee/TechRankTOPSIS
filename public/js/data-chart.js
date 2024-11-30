@@ -8,6 +8,7 @@ $(document).ready(function() {
                 // Get data from API
                 const data = {
                     total_users: response.data.total_users,
+                    total_admins: response.data.total_admins,
                     success_task: response.data.success_task,
                     total_customers: response.data.total_customers,
                     success_task_per_day: response.data.success_task_per_day
@@ -20,7 +21,7 @@ $(document).ready(function() {
                 
                 // Call function to draw chart
                 getDataAreaChart('myAreaChart', labels, taskCounts);
-                getDataPieChart('myPieChart', ['Pelanggan', 'Teknisi'], [data.total_users, data.total_customers]);
+                getDataPieChart('myPieChart', ['Admin', 'Teknisi'], [data.total_admins, data.total_users]);
 
             } else {
                 console.error('Error: ' + response.message);

@@ -9,11 +9,12 @@ class TechReport extends Model
 {
     use HasFactory;
 
+    protected $table = 'report_technician';
     protected $fillable = [
         'report_id',
+        'device',
         'brand',
-        'service_type',
-        'payment_method',
+        'kerusakan',
         'imageUrl',
         'imageDesc',
     ];

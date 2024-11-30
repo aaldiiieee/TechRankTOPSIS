@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Report;
 use App\Models\TechReport;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReportMail;
 
 class ServiceReportController extends Controller
 {
@@ -48,17 +50,22 @@ class ServiceReportController extends Controller
 
         TechReport::create([
             'report_id' => $report_id,
+            'device' => $request->input('device'),
             'brand' => $request->input('brand'),
-            'service_type' => $request->input('serviceType'),
-            'payment_method' => $request->input('paymentMethod'),
+            'kerusakan' => $request->input('kerusakan'),
             'imageUrl' => $imagePath,
             'imageDesc' => $request->input('imageDesc'),
         ]);
 
+        // Update customer status
         $customer = Customer::findOrFail($request->customerID);
         $customer->status = 'success';
         $customer->save();
 
-        return redirect()->back()->with('success', 'Report saved successfully!');
+        // Kirim email
+        $feedbackUrl = url("/feedback/{$customer->id}"); // URL ke halaman feedback
+        Mail::to($customer->email)->send(new ReportMail($customer, $feedbackUrl));
+
+        return redirect('/customers')->with('success', 'Report saved and email sent successfully!');
     }
 }

@@ -29,17 +29,22 @@
                             <label for="phone">No. Telepon</label>
                             <input type="number" name="phone" id="phone" class="form-control" placeholder="Masukan nomor telepon" required>
                         </div>
+                        <div class="form-floating">
+                            <label for="keluhan">Tugas</label>
+                            <textarea class="form-control" name="keluhan" placeholder="Leave a comment here" id="keluhan"></textarea>
+                        </div>
                     </div>
                     <div class="col-lg-6 col-12">
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" name="email" id="email" placeholder="Masukan email" class="form-control" required>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-12">
-                        <div class="form-floating">
-                            <label for="keluhan">Tugas</label>
-                            <textarea class="form-control" name="keluhan" placeholder="Leave a comment here" id="keluhan"></textarea>
+                        <div class="alert alert-warning" role="alert">
+                            <h6 class="alert-heading">
+                                <i class="fa-solid fa-circle-exclamation fs-1"></i>
+                                Perhatian!
+                            </h6>
+                            <p class="mb-0">Email pelanggan akan digunakan untuk membuat laporan. Pastikan alamat lengkap.</p>
                         </div>
                     </div>
                 </div>

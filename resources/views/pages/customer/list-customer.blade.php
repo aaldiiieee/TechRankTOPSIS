@@ -40,7 +40,7 @@
                                 <td>{{ $customer->address }}</td>
                                 <td>{{ $customer->phone }}</td>
                                 <td>{{ $customer->email }}</td>
-                                <td>{{ $customer->purpose }}</td>
+                                <td>{{ $customer->keluhan }}</td>
                                 <td>
                                     {{ $customer->techName }}
                                     
