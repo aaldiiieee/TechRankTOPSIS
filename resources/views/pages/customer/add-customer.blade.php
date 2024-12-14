@@ -44,7 +44,7 @@
                                 <i class="fa-solid fa-circle-exclamation fs-1"></i>
                                 Perhatian!
                             </h6>
-                            <p class="mb-0">Email pelanggan akan digunakan untuk membuat laporan. Pastikan alamat lengkap.</p>
+                            <p class="mb-0">Email pelanggan akan digunakan untuk membuat laporan. Pastikan alamat email lengkap.</p>
                         </div>
                     </div>
                 </div>

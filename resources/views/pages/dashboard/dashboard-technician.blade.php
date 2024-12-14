@@ -106,6 +106,52 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Technician Scores</h6>
+            </div>
+            <div class="table-responsive">
+                <table class="table project-list-table table-nowrap align-middle table-borderless">
+                    <thead>
+                        <tr class="shadow">
+                            <th scope="col">Rank</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($technicianScores as $score)
+                            <tr class="shadow">
+                                <td>{{ $score->rank }}</td>
+                                <td>
+                                    <img src="{{ $score->avatar_url }}" alt="Avatar Icon" class="avatar-sm rounded-circle me-2" />
+                                    <a href="#" class="text-body">{{ $score->technician->name ?? 'N/A' }}</a>
+                                </td>
+                                <td><span class="badge badge-soft-success mb-0">{{ $score->technician->email ?? 'N/A' }}</span></td>
+                                <td>
+                                    @php
+                                        $badgeClass = '';
+                                        if ($score->score <= 0.4) {
+                                            $badgeClass = 'badge-soft-danger';
+                                        } elseif ($score->score > 0.4 && $score->score <= 0.7) {
+                                            $badgeClass = 'badge-soft-warning';
+                                        } else {
+                                            $badgeClass = 'badge-soft-success';
+                                        }
+                                    @endphp
+                                    <span class="badge {{ $badgeClass }} mb-0">{{ number_format($score->score, 2) }}</span>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('scripts')

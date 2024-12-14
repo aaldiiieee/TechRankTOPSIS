@@ -18,12 +18,12 @@
                             <input type="text" name="name" id="name" class="form-control" placeholder="Masukan nama lengkap" required>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-12">
+                    {{-- <div class="col-lg-6 col-12">
                         <div class="form-group">
                             <label for="phone">No. Phone</label>
                             <input type="number" name="phone" id="phone" class="form-control" placeholder="Masukan nomor telepon" required>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-lg-6 col-12">
                         <div class="form-group">
                             <label for="email">Email</label>
@@ -81,7 +81,7 @@
             const email = $('#email').val();
             const password = $('#password').val();
             const password_confirmation = $('#password_confirmation').val();
-            const phone = $('#phone').val();
+            // const phone = $('#phone').val();
             const role = $('#role').val();
 
             const token = $('meta[name="csrf-token"]').attr('content');
@@ -95,7 +95,7 @@
                     password: password,
                     password_confirmation: password_confirmation,
                     role: role,
-                    phone: phone,
+                    // phone: phone,
                     _token: token
                 },
                 success: function(response) {

@@ -18,7 +18,7 @@ class EmployeeController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'phone' => 'required|string|max:15',
+            // 'phone' => 'required|string|max:15',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'role' => 'required|in:super_admin,admin,user',
@@ -26,7 +26,7 @@ class EmployeeController extends Controller
 
         $user = new User();
         $user->name = $request->input('name');
-        $user->phone = $request->input('phone');
+        // $user->phone = $request->input('phone');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
         $user->role = $request->input('role');
@@ -51,13 +51,13 @@ class EmployeeController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'phone' => 'required|string|max:15',
+            // 'phone' => 'required|string|max:15',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'role' => 'required|in:super_admin,admin,user',
         ]);
 
         $user->name = $request->input('name');
-        $user->phone = $request->input('phone');
+        // $user->phone = $request->input('phone');
         $user->email = $request->input('email');
         $user->role = $request->input('role');
 

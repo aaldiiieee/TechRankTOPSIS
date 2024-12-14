@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Customer;
+use App\Models\TechnicianScore;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Http;
 
 class DashboardController extends Controller
 {
@@ -15,18 +17,59 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
 
+        // if ($user->hasRole('admin') or $user->hasRole('super_admin')) {
+        //     $getRoleCounter = $this->countUsersByRole();
+        //     $technicianScores = TechnicianScore::orderBy('rank', 'asc')->get();
+        //     return view('pages.dashboard.dashboard', [
+        //         'getRoleCounter' => $getRoleCounter,
+        //         'technicianScores' => $technicianScores
+        //     ]);
+        // } elseif ($user->hasRole('user')) {
+        //     $customersCount = Customer::where('techID', $user->id)->where('status', '!=', 'success')->count();
+        //     $pendingTask = $this->countPendingTask($user->id);
+        //     $successTask = $this->countSuccessTask($user->id);
+        //     $technicianScores = TechnicianScore::orderBy('rank', 'asc')->get();
+
+        //     return view('pages.dashboard.dashboard-technician', [
+        //         'customersCount' => $customersCount,
+        //         'successTask' => $successTask,
+        //         'pendingTask' => $pendingTask,
+        //         'technicianScores' => $technicianScores
+        //     ]);
+        // }
+
         if ($user->hasRole('admin') or $user->hasRole('super_admin')) {
             $getRoleCounter = $this->countUsersByRole();
-            return view('pages.dashboard.dashboard', $getRoleCounter);
+            $userCount = $getRoleCounter['userCount'];
+            $adminCount = $getRoleCounter['adminCount'];
+            $superAdminCount = $getRoleCounter['superAdminCount'];
+            $customerCount = $getRoleCounter['customerCount'];
+            $technicianScores = TechnicianScore::orderBy('rank', 'asc')->get()->map(function ($score) {
+                $score->avatar_url = 'https://api.dicebear.com/6.x/adventurer/svg?seed=' . urlencode($score->technician->name ?? uniqid());
+                return $score;
+            });
+            
+            return view('pages.dashboard.dashboard', [
+                'userCount' => $userCount,
+                'adminCount' => $adminCount,
+                'superAdminCount' => $superAdminCount,
+                'customerCount' => $customerCount,
+                'technicianScores' => $technicianScores,
+            ]);
         } elseif ($user->hasRole('user')) {
             $customersCount = Customer::where('techID', $user->id)->where('status', '!=', 'success')->count();
             $pendingTask = $this->countPendingTask($user->id);
             $successTask = $this->countSuccessTask($user->id);
-            
+            $technicianScores = TechnicianScore::orderBy('rank', 'asc')->get()->map(function ($score) {
+                $score->avatar_url = 'https://api.dicebear.com/6.x/adventurer/svg?seed=' . urlencode($score->technician->name ?? uniqid());
+                return $score;
+            });
+
             return view('pages.dashboard.dashboard-technician', [
                 'customersCount' => $customersCount,
                 'successTask' => $successTask,
-                'pendingTask' => $pendingTask
+                'pendingTask' => $pendingTask,
+                'technicianScores' => $technicianScores,
             ]);
         }
     }

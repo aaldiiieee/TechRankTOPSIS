@@ -21,7 +21,6 @@
                     <thead>
                         <tr>
                             <th>Nama</th>
-                            <th>No. Telepon</th>
                             <th>Email</th>
                             <th>Posisi</th>
                             <th>Aksi</th>
@@ -31,7 +30,6 @@
                         @foreach($users as $user)
                             <tr>
                                 <td>{{ $user['name'] }}</td>
-                                <td>{{ $user['phone'] }}</td>
                                 <td>{{ $user['email'] }}</td>
                                 <td>{{ $user['role'] }}</td>
                                 <td>
